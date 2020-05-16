@@ -4,8 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spaceship You</title>
+    <style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    #start{
+        background: white;
+    }
+
+    #plan{
+        height: 600px;
+    }
+
+    #stats{
+        height: 600px;
+    }
+
+    .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            }
+
+    #smiley{
+        background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png) no-repeat center top;
+        cursor: pointer;
+        width: 200px;
+        height: 100px;
+        border: none;
+    }
+     </style>
+     <script src="index.js"></script>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <div class="main" id="start">
+    <h1>Spaceship You</h1>
+
+    <p>
+        Are you spending hours on YouTube and can't find the will to get off? Want to have some balance in your life? Is your a mess after Covid? We have the tool to help you get your productivity back!
+
+        The model was based off of CPG Grey's video, and will help to reflect on your past days to make the most out of your time at home. Let's all do our best to come out of this better than when we came in!
+    </p>
+    
+    <iframe width="420" height="315"
+    src="https://www.youtube.com/embed/snAhsXyO3Ck">
+    </iframe>
+
+    <a href="#plan" class="button">Let's do this!</a>
+    </div>
+
+    <div class="main" id="plan">
+        <h1>Plan fam</h1>
+        <a href="#stats" class="button">What are your stats like?</a>
+        <a href="#stats" class="button">Export to Google Calendar</a>
+
+        <!--<div class="smiley"><INPUT type="submit" name="Hello" value=""></div>-->
+        <button id="smiley" type="submit">Search with Google</button>
+    </div>
+
+    <div class="main" id="stats">
+        <h1>getthebread</h1>
+        <canvas id="piechart" height=500 width=500></canvas>
+    </div>
+
 </body>
 </html>
