@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spaceship You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
     <style>
     html {
         scroll-behavior: smooth;
     }
 
+    * {
+        font-family: 'Balsamiq Sans', cursive;
+    }
+
     #start{
         background: white;
+        max-width: 960px;
+        margin: auto;
     }
 
     #plan{
         height: 600px;
+        max-width: 960px;
+        margin: auto;
     }
 
     #stats{
         height: 600px;
+        max-width: 960px;
+        margin: auto;
+    }
+
+    iframe {
+        display: block;
+        margin: auto;
     }
 
     .button {
@@ -42,8 +58,11 @@
         height: 100px;
         border: none;
     }
+    #piechart {
+        margin: auto;
+    }
      </style>
-     <script src="index.js"></script>
+     <script src="index.js" defer></script>
 </head>
 <body>
     <div class="main" id="start">
@@ -54,7 +73,7 @@
 
         The model was based off of CPG Grey's video, and will help to reflect on your past days to make the most out of your time at home. Let's all do our best to come out of this better than when we came in!
     </p>
-    
+
     <iframe width="420" height="315"
     src="https://www.youtube.com/embed/snAhsXyO3Ck">
     </iframe>
@@ -73,7 +92,7 @@
 
     <div class="main" id="stats">
         <h1>getthebread</h1>
-        <canvas id="piechart" height=500 width=500></canvas>
+        <canvas id="piechart" width="500" height="500"></canvas>
     </div>
 
 </body>
