@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
     <style>
     html {
-        scroll-behavior: smooth;
+        scroll  -behavior: smooth;
     }
 
     * {
@@ -28,6 +28,7 @@
         height: 1500px;
         max-width: 960px;
         margin: auto;
+        text-align: center;
     }
 
     #stats{
@@ -40,6 +41,20 @@
         display: block;
         margin: auto;
     }
+
+    .starting {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            }
 
     button {
             background-color: #4CAF50;
@@ -89,6 +104,21 @@
         height: 100px;
         border: none;
     }
+
+    .center {
+        margin: 0px;
+        position: absolute;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        padding-top: 5px;
+    }
+
+    .wrapper
+    {
+        text-align: center;
+    }
+
     #piechart {
         margin: auto;
     }
@@ -100,7 +130,9 @@
     }
 
     .secondary-buttons {
-      padding-top: 5px;
+      /* padding-top: 5px; */
+      position: absolute;
+    left: 50%;
     }
 
     #intro-vid {
@@ -140,6 +172,8 @@
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 100%;
+      justify-content: center;
+      text-align: center;
     }
 
     td, th {
@@ -156,13 +190,15 @@
       background-color: white;
     }
 
-     </style>
-     <script src="index.js" defer></script>
-</head>
-<body>
+    </style>
+    <script src="index.js" defer></script>
+    </head>
+    <body>
 
     <div class="main" id="start">
     <h1>Spaceship You</h1>
+
+<!-- https://graphicriver.img.customer.envatousercontent.com/files/262056776/rocket-pre.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=5685feed30020dd37c2dea170e76939e -->
 
     <p>
         Are you spending hours on YouTube and can't find the will to get off? Want to have some balance in your life? Is your a mess after Covid? We have the tool to help you get your productivity back!
@@ -178,7 +214,7 @@
       <form>
         Name: <input id="name" type="text" name="name"><br>
         E-mail: <input id="email" type="text" name="email"><br>
-        <a href="#plan" class="secondary-button">Let's go!</a>
+        <a href="#plan" class="starting">Let's go!</a>
       </form>
     </div>
 
@@ -198,9 +234,7 @@
 
 <div class="main" id="plan">
   <h1>Planning</h1>
-  <div class="secondary-buttons">
-      <button onclick="authenticate().then(loadClient).then(load).then(bgcolour)">Authorize and Load</button>
-  </div>
+      <button class="secondary-buttons" onclick="authenticate().then(loadClient).then(load).then(bgcolour)">Authorize and Load</button>
   
   <form class="box-container">
 
@@ -414,11 +448,11 @@
 
 <form onsubmit="return getMood();">
   <label class="rating"> 
-    <input id="mood5" type="radio" name="rating" value=5><img src="images/smiley-5.png" alt="smiley-5" style="border-radius:50%">
-    <input id="mood4" type="radio" name="rating" value=4><img src="images/smiley-4.png" alt="smiley-4" style="border-radius:50%">
+    <input id="mood5" type="radio" name="rating" value=1><img src="images/smiley-1.png" alt="smiley-5" style="border-radius:50%">
+    <input id="mood4" type="radio" name="rating" value=2><img src="images/smiley-2.png" alt="smiley-4" style="border-radius:50%">
     <input id="mood3" type="radio" name="rating" value=3><img src="images/smiley-3.png" alt="smiley-3" style="border-radius:50%">
-    <input id="mood2" type="radio" name="rating" value=2><img src="images/smiley-2.png" alt="smiley-2" style="border-radius:50%">
-    <input id="mood1" type="radio" name="rating" value=1><img src="images/smiley-1.png" alt="smiley-1" style="border-radius:50%">
+    <input id="mood2" type="radio" name="rating" value=4><img src="images/smiley-4.png" alt="smiley-2" style="border-radius:50%">
+    <input id="mood1" type="radio" name="rating" value=5><img src="images/smiley-5.png" alt="smiley-1" style="border-radius:50%">
     <button type="button" onclick="return getMood();">Submit
     <!-- <input type="submit" id="submit"> -->
   </label>
@@ -572,12 +606,24 @@
             let rn = start + 1;
             let cn = 1;
 
-            if (start > end){
-            //Can't happen be very bad
-            }else {
+            var myParent = document.body;
+
+            var selectList = document.createElement("select");
+            selectList.id = "mySelect";
+
+            for (var i = 1; i <= 5; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            selectList.appendChild(option);
+            }
+
             for (let i = 0; i <= (end - start); i++){
+            var x=document.getElementById('timetable').rows[parseInt(rn + i,10)].cells;
+            x[parseInt(cn,10)].innerHTML = title;
+            if (i == (end - start)){
                 var x=document.getElementById('timetable').rows[parseInt(rn + i,10)].cells;
-                x[parseInt(cn,10)].innerHTML=title;
+                x[parseInt(2,10)].appendChild(selectList);
             }
             }
             }
@@ -624,7 +670,7 @@ gapi.load("client:auth2", function() {
 
 </div>
     <div class="main" id="stats">
-        <h1>getthebread</h1>
+        <h1>Statistics</h1>
         <canvas id="piechart" width="500" height="500"></canvas>
         <button id = something>testButton</button>
     </div>
